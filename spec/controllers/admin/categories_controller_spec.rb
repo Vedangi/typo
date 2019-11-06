@@ -33,6 +33,27 @@ describe Admin::CategoriesController do
       assigns(:categories).should_not be_nil
     end
   end
+  
+    describe "test_create" do
+    before(:each) do
+      get :new
+    end
+
+    it 'should render template new' do
+      assert_template 'new'
+      assert_tag :tag => "table",
+        :attributes => { :id => "category_container" }
+    end
+
+    it 'should create a new category' do
+      post :edit, :category => {:name => "FakeLame", :keywords => "fake", :permalink => "FL", :description => "Fake and super lame"  }
+    
+      assert_response :redirect, :action => "index"
+      expect(assigns(:category)).should_not be_nil
+      expect(flash[:notice]).to eq("Category was successfully saved.")
+
+    end
+  end
 
   it "test_update" do
     post :edit, :id => Factory(:category).id
