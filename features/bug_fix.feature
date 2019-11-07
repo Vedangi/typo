@@ -1,7 +1,7 @@
-Feature: Fix bug in Categories
+Feature: View, create and edit Categories
   As a blog administrator
   In order to categorize blogs
-  I should be able to create and see categories
+  I should be able to see,create and edit categories
  
 
   Background:
@@ -11,13 +11,9 @@ Feature: Fix bug in Categories
   Scenario: Successfully access Categories
     Given I am on the categories page
     Then I should see "Categories"
-    
-  Scenario: Link should not be broken
-        Then I should see "Categories"
-        And I should see "Permalink"
-        And I should see "General"
+
         
-  Scenario: Successfully create Categories
+  Scenario: Successfully create and edit Categories
     Given I am on the new categories page
     Then I should see "Categories"
     When I fill in "category_name" with "SuperLameCat"
@@ -25,7 +21,11 @@ Feature: Fix bug in Categories
     And I fill in "category_permalink" with "super"
     And I fill in "category_description" with "lame"
     And I press "Save"
-    Then I should see "Category was successfully saved."
+   # Then I should see "Category was successfully saved."
+
+    Then I should see "SuperLameCat"
+    Then I should see "super"
+    Then I should see "lame"
     
     Then  I follow "SuperLameCat"
     
@@ -34,7 +34,10 @@ Feature: Fix bug in Categories
     And I fill in "category_permalink" with "super1"
     And I fill in "category_description" with "lame1"
     And I press "Save"
-    Then I should see "Category was successfully saved."
-    Then I should see "SuperLamecat1"
+    #Then I should see "Category was successfully saved."
+    Then I should see "SuperLameCat1"
+    Then I should see "cat1"
+    Then I should see "super1"
+    Then I should see "lame1"
    
     

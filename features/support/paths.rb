@@ -17,6 +17,7 @@ module NavigationHelpers
       '/'
     when /^the new article page$/
       '/admin/content/new'
+      
     when /^the new categories page$/
       '/admin/categories/new'
 

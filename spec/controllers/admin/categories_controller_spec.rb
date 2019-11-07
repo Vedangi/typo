@@ -49,7 +49,7 @@ describe Admin::CategoriesController do
       post :edit, :category => {:name => "FakeLame", :keywords => "fake", :permalink => "FL", :description => "Fake and super lame"  }
     
       assert_response :redirect, :action => "index"
-      expect(assigns(:category)).should_not be_nil
+      expect(assigns(:category)).not_to be_nil
       expect(flash[:notice]).to eq("Category was successfully saved.")
 
     end
